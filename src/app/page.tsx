@@ -1,25 +1,41 @@
 'use client'
 
+import { useState } from 'react'
+import { tools } from '@/data/tools'
 import ToolCard from '@/components/ToolCard'
 import SearchBar from '@/components/SearchBar'
 import CategoryFilter from '@/components/CategoryFilter'
-import { tools } from '@/data/tools'
-import { useState } from 'react'
+import { Tool } from '@/types/tool'
+import { FaGithub, FaTwitter } from 'react-icons/fa'
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('all')
-  
+  const [searchResults, setSearchResults] = useState<Tool[]>(tools)
+
   const filteredTools = selectedCategory === 'all' 
-    ? tools 
-    : tools.filter(tool => tool.category === selectedCategory)
+    ? searchResults 
+    : searchResults.filter(tool => tool.category === selectedCategory)
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
+      <header className="header">
         <div className="container py-4">
-          <h1 className="text-2xl font-bold text-gray-900">工具导航站</h1>
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">工具导航站</h1>
+            <div className="flex items-center gap-4">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                <FaGithub className="w-5 h-5" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                <FaTwitter className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
           <div className="mt-4 flex flex-col md:flex-row gap-4">
-            <SearchBar />
+            <SearchBar 
+              tools={tools} 
+              onSearch={setSearchResults} 
+            />
             <CategoryFilter 
               tools={tools} 
               onCategoryChange={setSelectedCategory} 
@@ -36,9 +52,16 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="bg-white border-t border-gray-100 mt-auto">
+      <footer className="footer">
         <div className="container py-6">
-          <p className="text-center text-gray-500">© 2024 工具导航站</p>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-center text-gray-500 dark:text-gray-400">© 2024 工具导航站</p>
+            <div className="flex items-center gap-4">
+              <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">关于我们</a>
+              <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">使用条款</a>
+              <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">隐私政策</a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

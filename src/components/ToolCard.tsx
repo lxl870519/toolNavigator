@@ -7,36 +7,42 @@ interface ToolCardProps {
   tool: Tool
 }
 
-const getDomain = (url: string) => {
-  try {
-    const domain = new URL(url).hostname.replace('www.', '')
-    return domain
-  } catch {
-    return url
-  }
-}
-
 export default function ToolCard({ tool }: ToolCardProps) {
   return (
-    <div className="card hover:scale-[1.02] transition-transform">
-      <div className="card-body">
-        <h3 className="card-title text-lg font-semibold text-gray-900">{tool.name}</h3>
-        <p className="text-gray-600 mb-1">{tool.description}</p>
-        <p className="text-gray-400 text-sm">{getDomain(tool.url)}</p>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {tool.tags.map(tag => (
-            <span key={tag} className="badge badge-outline">{tag}</span>
-          ))}
-        </div>
-        <div className="card-actions justify-end mt-4">
-          <a 
-            href={tool.url} 
-            target="_blank" 
+    <div className="card group">
+      <div className="flex flex-col h-full">
+        <div className="flex items-start justify-between mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary">
+            {tool.name}
+          </h3>
+          <a
+            href={tool.url}
+            target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary btn-sm flex items-center"
+            className="text-gray-400 hover:text-primary transition-colors"
           >
-            访问 <FaExternalLinkAlt className="ml-1" />
+            <FaExternalLinkAlt className="w-4 h-4" />
           </a>
+        </div>
+        
+        <p className="text-gray-600 dark:text-gray-400 mb-4 flex-grow">
+          {tool.description}
+        </p>
+        
+        <div className="flex items-center justify-between">
+          <span className="text-sm text-gray-500 dark:text-gray-400">
+            {tool.category}
+          </span>
+          <div className="flex gap-2">
+            {tool.tags.map(tag => (
+              <span
+                key={tag}
+                className="badge badge-outline"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>

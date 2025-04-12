@@ -3,8 +3,48 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --primary: #4F46E5;
+    --primary-dark: #4338CA;
+    --primary-light: #6366F1;
+    --secondary: #8B5CF6;
+    --secondary-dark: #7C3AED;
+    --accent: #EC4899;
+    --background: #FAFAFA;
+    --foreground: #1F2937;
+    --muted: #6B7280;
+    --muted-foreground: #9CA3AF;
+    --border: #E5E7EB;
+    --card: #FFFFFF;
+    --card-foreground: #1F2937;
+    --popover: #FFFFFF;
+    --popover-foreground: #1F2937;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  .dark {
+    --primary: #6366F1;
+    --primary-dark: #4F46E5;
+    --primary-light: #818CF8;
+    --secondary: #A78BFA;
+    --secondary-dark: #8B5CF6;
+    --accent: #F472B6;
+    --background: #111827;
+    --foreground: #F9FAFB;
+    --muted: #4B5563;
+    --muted-foreground: #6B7280;
+    --border: #374151;
+    --card: #1F2937;
+    --card-foreground: #F9FAFB;
+    --popover: #1F2937;
+    --popover-foreground: #F9FAFB;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
   body {
-    @apply bg-[#f3f2ff] text-gray-900;
+    @apply bg-[var(--background)] text-[var(--foreground)] transition-colors duration-200;
   }
 }
 
@@ -14,34 +54,50 @@
   }
 
   .btn {
-    @apply px-4 py-2 rounded-lg font-medium transition-colors;
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
   }
 
   .btn-primary {
-    @apply bg-[#7c3aed] text-white hover:bg-[#6d28d9];
+    @apply bg-[var(--primary)] text-white hover:bg-[var(--primary-dark)] hover:shadow-lg hover:scale-105;
   }
 
   .btn-secondary {
-    @apply bg-white text-gray-800 hover:bg-gray-50 border border-gray-200;
+    @apply bg-[var(--card)] text-[var(--card-foreground)] hover:bg-[var(--muted)] hover:bg-opacity-10 border border-[var(--border)] hover:shadow-md;
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100;
+    @apply bg-[var(--card)] text-[var(--card-foreground)] rounded-xl p-6 border border-[var(--border)];
+    background: linear-gradient(145deg, var(--card) 0%, color-mix(in srgb, var(--card) 95%, var(--background)) 100%);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
   }
 
   .input {
-    @apply w-full px-4 py-2 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed] focus:border-transparent text-gray-900;
+    @apply w-full px-4 py-2 bg-[var(--card)] border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent text-[var(--card-foreground)] transition-all duration-200;
   }
 
   .select {
-    @apply w-full px-4 py-2 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed] focus:border-transparent text-gray-900;
+    @apply w-full px-4 py-2 bg-[var(--card)] border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent text-[var(--card-foreground)];
   }
 
   .badge {
-    @apply px-3 py-1 rounded-full text-sm font-medium;
+    @apply px-3 py-1 rounded-full text-sm font-medium transition-all duration-200;
   }
 
   .badge-outline {
-    @apply border border-gray-200 text-gray-600 hover:bg-gray-50;
+    @apply border border-[var(--border)] text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:bg-opacity-10 hover:scale-105;
+  }
+
+  .header {
+    @apply bg-[var(--card)] border-b border-[var(--border)] sticky top-0 z-50 backdrop-blur-sm bg-opacity-80;
+  }
+
+  .footer {
+    @apply bg-[var(--card)] border-t border-[var(--border)] backdrop-blur-sm bg-opacity-80;
   }
 } 
