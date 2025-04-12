@@ -11,7 +11,7 @@ interface CategoryFilterProps {
 export default function CategoryFilter({ tools, onCategoryChange }: CategoryFilterProps) {
   const [selectedCategory, setSelectedCategory] = useState('all')
   
-  const categories = ['all', ...new Set(tools.map(tool => tool.category))]
+  const categories = ['all', ...Array.from(new Set(tools.map(tool => tool.category)))]
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category)
