@@ -24,7 +24,11 @@ export default function CategoryFilter({ tools, onCategoryChange }: CategoryFilt
         <button
           key={category}
           onClick={() => handleCategoryChange(category)}
-          className={`btn ${selectedCategory === category ? 'btn-primary' : 'bg-gray-200 hover:bg-gray-300'}`}
+          className={`btn ${
+            selectedCategory === category 
+              ? 'bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] text-white hover:from-[var(--primary-dark)] hover:to-[var(--secondary-dark)]' 
+              : 'bg-[var(--background)] text-[var(--foreground)] hover:bg-[var(--muted)] hover:bg-opacity-10 border border-[var(--border)] hover:border-[var(--primary)]'
+          } transition-all duration-200`}
         >
           {category === 'all' ? '全部' : category}
         </button>
