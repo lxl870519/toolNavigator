@@ -320,5 +320,13 @@ export const tools: Tool[] = [
     url: 'https://www.searchsuggest.tips/',
     category: 'seo',
     tags: ['SEO', '关键词']
+  },
+  {
+    id: '41',
+    name: 'There\'s An AI For That',
+    description: 'AI工具需求列表',
+    url: 'https://theresanaiforthat.com/requests',
+    category: 'ai',
+    tags: ['AI', '工具']
   }
 ] 
