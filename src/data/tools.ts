@@ -328,5 +328,13 @@ export const tools: Tool[] = [
     url: 'https://theresanaiforthat.com/requests',
     category: 'ai',
     tags: ['AI', '工具']
+  },
+  {
+    id: '32',
+    name: 'PageSpeed Insights',
+    description: 'Google开发的网站性能检测工具',
+    url: 'https://pagespeed.web.dev/',
+    category: 'development',
+    tags: ['性能', '检测']
   }
 ] 
