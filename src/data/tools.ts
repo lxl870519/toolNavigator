@@ -322,14 +322,6 @@ export const tools: Tool[] = [
     tags: ['SEO', '关键词']
   },
   {
-    id: '41',
-    name: 'There\'s An AI For That',
-    description: 'AI工具需求列表',
-    url: 'https://theresanaiforthat.com/requests',
-    category: 'ai',
-    tags: ['AI', '工具']
-  },
-  {
     id: '32',
     name: 'PageSpeed Insights',
     description: 'Google开发的网站性能检测工具',
