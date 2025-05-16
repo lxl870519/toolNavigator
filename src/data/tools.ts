@@ -328,5 +328,13 @@ export const tools: Tool[] = [
     url: 'https://pagespeed.web.dev/',
     category: 'development',
     tags: ['性能', '检测']
+  },
+  {
+    id: '41',
+    name: 'TLD List 中文版',
+    description: '全球顶级域名（TLD）信息查询与对比平台，支持中文界面',
+    url: 'https://zh-hans.tld-list.com/',
+    category: 'domain',
+    tags: ['域名', '查询', 'TLD']
   }
 ] 

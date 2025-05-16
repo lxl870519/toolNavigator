@@ -8,14 +8,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#2563eb',
+        primary: '#6366f1',
+        primaryLight: '#818cf8',
         secondary: '#10b981',
-        dark: '#1f2937',
+        background: '#f7f8fa',
+        card: '#fff',
+        border: '#e5e7eb',
+        muted: '#6b7280',
       },
     },
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light"],
+    themes: ["light", "dark"],
   },
 } 

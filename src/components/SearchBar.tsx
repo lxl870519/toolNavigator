@@ -32,13 +32,13 @@ export default function SearchBar({ tools, onSearch }: SearchBarProps) {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="搜索工具名称、描述或标签..."
-        className="input pl-10 pr-8"
+        className="input pl-10 pr-8 rounded-full shadow bg-white dark:bg-[var(--card)] border border-[var(--border)] focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] text-[var(--foreground)] transition-all duration-200"
       />
-      <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+      <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--primary)]" />
       {searchQuery && (
         <button
           onClick={clearSearch}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[var(--primary)] hover:text-[var(--primary-light)]"
         >
           <FaTimes />
         </button>
