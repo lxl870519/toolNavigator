@@ -322,7 +322,7 @@ export const tools: Tool[] = [
     tags: ['SEO', '关键词']
   },
   {
-    id: '32',
+    id: '42',
     name: 'PageSpeed Insights',
     description: 'Google开发的网站性能检测工具',
     url: 'https://pagespeed.web.dev/',

@@ -1,17 +1,53 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { tools } from '@/data/tools'
 import ToolCard from '@/components/ToolCard'
 import SearchBar from '@/components/SearchBar'
 import CategoryFilter from '@/components/CategoryFilter'
 import { Tool } from '@/types/tool'
-import { FaGithub, FaTwitter, FaMoon, FaSun } from 'react-icons/fa'
+import { FaGithub, FaTwitter, FaMoon, FaSun, FaTools, FaSearch, FaUsers, FaChartLine, FaHeart } from 'react-icons/fa'
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchResults, setSearchResults] = useState<Tool[]>(tools)
   const [isDark, setIsDark] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  // 简单的计数器状态
+  const [toolCount, setToolCount] = useState(0)
+  const [userCount, setUserCount] = useState(0)
+  const [categoryCount, setCategoryCount] = useState(0)
+
+  // 获取分类的中文显示名称
+  const getCategoryDisplayName = (category: string) => {
+    const categoryNames: { [key: string]: string } = {
+      'all': '全部分类',
+      'domain': '域名工具',
+      'ai': 'AI工具',
+      'analytics': '数据分析',
+      'seo': 'SEO工具',
+      'monetization': '网站变现',
+      'payment': '支付工具',
+      'productivity': '效率工具',
+      'development': '开发工具',
+      'design': '设计工具',
+      'marketing': '营销工具',
+      'tools': '通用工具',
+      'security': '安全工具',
+      'social': '社交媒体'
+    }
+    return categoryNames[category] || category
+  }
+
+  useEffect(() => {
+    setMounted(true)
+    
+    // 简单的数字设置，不用动画
+    setToolCount(tools.length)
+    setUserCount(1200)
+    setCategoryCount(new Set(tools.map(tool => tool.category)).size)
+  }, [])
 
   const filteredTools = selectedCategory === 'all' 
     ? searchResults 
@@ -22,57 +58,202 @@ export default function Home() {
     setIsDark(!isDark)
   }
 
+  if (!mounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="loading-spinner"></div>
+      </div>
+    )
+  }
+
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="header bg-white border-b border-[var(--border)] sticky top-0 z-50">
-        <div className="container py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-[var(--primary)] flex items-center justify-center text-white font-bold text-xl shadow">T</div>
-            <h1 className="text-2xl font-extrabold text-[var(--primary)] tracking-wide">工具导航站</h1>
+    <div className="min-h-screen bg-[var(--background)]">
+      {/* 顶部导航栏 */}
+      <header className="header">
+        <div className="container py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[var(--primary)] flex items-center justify-center text-white shadow-sm">
+                <FaTools className="w-5 h-5" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold gradient-text">工具导航站</h1>
+                <p className="text-sm text-[var(--muted)]">发现优质在线工具</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <button
+                className="btn-secondary w-10 h-10 flex items-center justify-center rounded-lg hover-lift"
+                title="切换主题"
+                onClick={toggleDarkMode}
+              >
+                {isDark ? <FaSun className="w-4 h-4" /> : <FaMoon className="w-4 h-4" />}
+              </button>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
+                 className="btn-secondary w-10 h-10 flex items-center justify-center rounded-lg hover-lift">
+                <FaGithub className="w-4 h-4" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
+                 className="btn-secondary w-10 h-10 flex items-center justify-center rounded-lg hover-lift">
+                <FaTwitter className="w-4 h-4" />
+              </a>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <button
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-[var(--primary)] hover:text-white text-[var(--primary)] transition"
-              title="夜间模式切换"
-              onClick={toggleDarkMode}
-            >
-              {isDark ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
-            </button>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-[var(--muted)] hover:text-[var(--primary)] transition">
-              <FaGithub className="w-5 h-5" />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[var(--muted)] hover:text-[var(--primary)] transition">
-              <FaTwitter className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-        <div className="container mt-4 flex flex-col md:flex-row gap-4">
-          <SearchBar 
-            tools={tools} 
-            onSearch={setSearchResults} 
-          />
-          <CategoryFilter 
-            tools={tools} 
-            onCategoryChange={setSelectedCategory} 
-          />
         </div>
       </header>
 
-      <main className="flex-1 container py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredTools.map((tool) => (
-            <ToolCard key={tool.id} tool={tool} />
-          ))}
+      {/* 主要内容 */}
+      <main className="container py-8">
+        {/* 简洁的英雄区域 */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-4">
+            探索优质工具
+          </h2>
+          <p className="text-lg md:text-xl text-[var(--muted)] mb-8 max-w-2xl mx-auto">
+            精心收集的在线工具集合，帮助您提升工作效率
+          </p>
+          
+          {/* 统计数据卡片 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
+            <div className="card text-center">
+              <FaTools className="w-8 h-8 text-[var(--primary)] mx-auto mb-3" />
+              <div className="text-2xl font-bold text-[var(--foreground)] mb-1">{toolCount}</div>
+              <div className="text-sm text-[var(--muted)]">精选工具</div>
+            </div>
+            <div className="card text-center">
+              <FaUsers className="w-8 h-8 text-[var(--secondary)] mx-auto mb-3" />
+              <div className="text-2xl font-bold text-[var(--foreground)] mb-1">{userCount}+</div>
+              <div className="text-sm text-[var(--muted)]">用户使用</div>
+            </div>
+            <div className="card text-center">
+              <FaChartLine className="w-8 h-8 text-[var(--accent)] mx-auto mb-3" />
+              <div className="text-2xl font-bold text-[var(--foreground)] mb-1">{categoryCount}</div>
+              <div className="text-sm text-[var(--muted)]">工具分类</div>
+            </div>
+          </div>
         </div>
+
+        {/* 搜索和筛选区域 */}
+        <div className="max-w-4xl mx-auto mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-end">
+            <div className="lg:col-span-3">
+              <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
+                搜索工具
+              </label>
+              <SearchBar 
+                tools={tools} 
+                onSearch={setSearchResults} 
+              />
+            </div>
+            <div className="lg:col-span-1">
+              <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
+                筛选分类
+              </label>
+              <CategoryFilter 
+                tools={tools} 
+                searchResults={searchResults}
+                onCategoryChange={setSelectedCategory} 
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* 结果统计 */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-2">
+            <FaSearch className="text-[var(--primary)] w-4 h-4" />
+            <span className="text-[var(--foreground)] font-medium">
+              找到 <span className="text-[var(--primary)]">{filteredTools.length}</span> 个工具
+            </span>
+          </div>
+          
+          {selectedCategory !== 'all' && (
+            <div className="flex items-center gap-2">
+              <span className="text-[var(--muted)] text-sm">当前分类:</span>
+              <span className="badge bg-[var(--primary)] text-white px-3 py-1 rounded-md text-sm">
+                {getCategoryDisplayName(selectedCategory)}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* 工具网格 */}
+        {filteredTools.length > 0 ? (
+          <div className="card-grid">
+            {filteredTools.map((tool) => (
+              <div key={tool.id} className="fade-in">
+                <ToolCard tool={tool} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16">
+            <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-[var(--background-secondary)] flex items-center justify-center">
+              <FaSearch className="w-8 h-8 text-[var(--muted)]" />
+            </div>
+            <h3 className="text-xl font-semibold text-[var(--foreground)] mb-2">未找到相关工具</h3>
+            <p className="text-[var(--muted)] mb-6">尝试调整搜索关键词或选择其他分类</p>
+            <button
+              onClick={() => {
+                setSelectedCategory('all')
+                setSearchResults(tools)
+              }}
+              className="btn btn-primary"
+            >
+              查看全部工具
+            </button>
+          </div>
+        )}
       </main>
 
-      <footer className="footer bg-white border-t border-[var(--border)] mt-8">
-        <div className="container py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-center text-[var(--muted)] font-semibold">© 2024 工具导航站</p>
-          <div className="flex items-center gap-4">
-            <a href="#" className="text-[var(--muted)] hover:text-[var(--primary)] transition">关于我们</a>
-            <a href="#" className="text-[var(--muted)] hover:text-[var(--primary)] transition">使用条款</a>
-            <a href="#" className="text-[var(--muted)] hover:text-[var(--primary)] transition">隐私政策</a>
+      {/* 页脚 */}
+      <footer className="footer">
+        <div className="container py-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-8 h-8 rounded-lg bg-[var(--primary)] flex items-center justify-center">
+                  <FaTools className="w-4 h-4 text-white" />
+                </div>
+                <span className="font-semibold text-[var(--foreground)]">工具导航站</span>
+              </div>
+              <p className="text-[var(--muted)] text-sm mb-3">
+                为您精心收集和整理实用的在线工具
+              </p>
+              <div className="flex items-center gap-1 text-sm text-[var(--muted)]">
+                <FaHeart className="text-red-500 w-3 h-3" />
+                <span>用心为您服务</span>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-[var(--foreground)] mb-3 text-sm">快速链接</h4>
+              <div className="space-y-2">
+                <a href="#" className="block text-[var(--muted)] hover:text-[var(--primary)] transition-colors text-sm">工具推荐</a>
+                <a href="#" className="block text-[var(--muted)] hover:text-[var(--primary)] transition-colors text-sm">使用指南</a>
+                <a href="#" className="block text-[var(--muted)] hover:text-[var(--primary)] transition-colors text-sm">意见反馈</a>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-[var(--foreground)] mb-3 text-sm">关于</h4>
+              <div className="space-y-2">
+                <a href="#" className="block text-[var(--muted)] hover:text-[var(--primary)] transition-colors text-sm">使用条款</a>
+                <a href="#" className="block text-[var(--muted)] hover:text-[var(--primary)] transition-colors text-sm">隐私政策</a>
+                <a href="#" className="block text-[var(--muted)] hover:text-[var(--primary)] transition-colors text-sm">联系我们</a>
+              </div>
+            </div>
+          </div>
+          
+          <div className="divider"></div>
+          
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[var(--muted)]">
+            <span>© 2024 工具导航站 - 提升效率，简化工作</span>
+            <div className="flex items-center gap-4">
+              <span>版本 v2.0.0</span>
+              <a href="#" className="hover:text-[var(--primary)] transition-colors">更新日志</a>
+            </div>
           </div>
         </div>
       </footer>
