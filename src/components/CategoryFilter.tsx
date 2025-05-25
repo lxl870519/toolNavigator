@@ -32,6 +32,7 @@ export default function CategoryFilter({ tools, onCategoryChange, searchResults 
       'all': '全部分类',
       'domain': '域名工具',
       'ai': 'AI工具',
+      'api': 'API平台',
       'analytics': '数据分析',
       'seo': 'SEO工具',
       'monetization': '网站变现',

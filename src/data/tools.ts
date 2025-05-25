@@ -20,10 +20,10 @@ export const tools: Tool[] = [
   {
     id: '3',
     name: 'OpenRouter',
-    description: '大模型API汇总站',
+    description: '语言类模型API的综合平台',
     url: 'https://openrouter.ai/',
-    category: 'ai',
-    tags: ['AI', 'API']
+    category: 'api',
+    tags: ['API平台', 'AI', '语言模型']
   },
   {
     id: '4',
@@ -336,5 +336,45 @@ export const tools: Tool[] = [
     url: 'https://zh-hans.tld-list.com/',
     category: 'domain',
     tags: ['域名', '查询', 'TLD']
+  },
+  {
+    id: '43',
+    name: 'Cursor Directory',
+    description: 'Cursor爱好者社区平台，提供规则、MCP服务器、工作机会和开发资源的一站式服务',
+    url: 'https://cursor.directory/',
+    category: 'development',
+    tags: ['开发', 'Cursor', '社区', '规则', 'MCP']
+  },
+  {
+    id: '44',
+    name: 'Together AI',
+    description: '语言类模型API的综合平台，同时也提供少量图片和视频处理模型',
+    url: 'https://www.together.ai/',
+    category: 'api',
+    tags: ['API平台', 'AI', '语言模型', '图片处理', '视频处理']
+  },
+  {
+    id: '45',
+    name: 'Fal AI',
+    description: '更专注提供图片和视频类API',
+    url: 'https://fal.ai/',
+    category: 'api',
+    tags: ['API平台', 'AI', '图片处理', '视频处理']
+  },
+  {
+    id: '46',
+    name: 'Replicate',
+    description: '最全的API平台，缺点是相对其它家比较贵',
+    url: 'https://replicate.com/',
+    category: 'api',
+    tags: ['API平台', 'AI', '机器学习', '全能平台']
+  },
+  {
+    id: '47',
+    name: 'SiliconFlow',
+    description: '国内产品！适合小白，提供的API少而精',
+    url: 'https://siliconflow.cn/',
+    category: 'api',
+    tags: ['API平台', 'AI', '国产', '新手友好']
   }
 ] 
