@@ -376,5 +376,53 @@ export const tools: Tool[] = [
     url: 'https://siliconflow.cn/',
     category: 'api',
     tags: ['API平台', 'AI', '国产', '新手友好']
+  },
+  {
+    id: '48',
+    name: 'Shipixen Landing Pages',
+    description: '精美的落地页组件示例库，提供现代化的设计灵感',
+    url: 'https://shipixen.com/demo/landing-page-component-examples',
+    category: 'design',
+    tags: ['ui优化', '落地页', '设计示例']
+  },
+  {
+    id: '49',
+    name: 'Launch UI Components',
+    description: '专业的UI组件库，快速构建现代化用户界面',
+    url: 'https://www.launchuicomponents.com/',
+    category: 'design',
+    tags: ['ui优化', '组件库', '设计系统']
+  },
+  {
+    id: '50',
+    name: 'Shadcn Landing Page',
+    description: '基于Shadcn/UI的开源落地页模板',
+    url: 'https://github.com/nobruf/shadcn-landing-page',
+    category: 'design',
+    tags: ['ui优化', '开源模板', 'React']
+  },
+  {
+    id: '51',
+    name: 'Tailus Templates',
+    description: '高品质网站模板库，价格实惠（最低十几美元）',
+    url: 'https://tailus.io/templates/',
+    category: 'design',
+    tags: ['ui优化', '网站模板', '实惠价格']
+  },
+  {
+    id: '52',
+    name: 'Tailus Marketing UI',
+    description: 'Tailus营销页面UI示例和组件',
+    url: 'https://ui.tailus.io/examples/marketing/',
+    category: 'design',
+    tags: ['ui优化', '营销页面', '设计参考']
+  },
+  {
+    id: '53',
+    name: 'Tailus Hero Sections',
+    description: 'Tailus英雄区域HTML模块库',
+    url: 'https://html.tailus.io/blocks/hero-section/',
+    category: 'design',
+    tags: ['ui优化', 'HTML模块', '页面区块']
   }
 ] 
