@@ -6,7 +6,7 @@ import { Tool } from '@/types/tool'
 interface CategoryFilterProps {
   tools: Tool[]
   onCategoryChange: (category: string) => void
-  searchResults?: Tool[] // 添加搜索结果参数
+  searchResults?: Tool[]
 }
 
 export default function CategoryFilter({ tools, onCategoryChange, searchResults }: CategoryFilterProps) {
@@ -26,26 +26,29 @@ export default function CategoryFilter({ tools, onCategoryChange, searchResults 
     return dataToUse.filter(tool => tool.category === category).length
   }
 
-  // 获取分类的显示名称
-  const getCategoryDisplayName = (category: string) => {
-    const categoryNames: { [key: string]: string } = {
-      'all': '全部分类',
-      'domain': '域名工具',
-      'ai': 'AI工具',
-      'api': 'API平台',
-      'analytics': '数据分析',
-      'seo': 'SEO工具',
-      'monetization': '网站变现',
-      'payment': '支付工具',
-      'productivity': '效率工具',
-      'development': '开发工具',
-      'design': '设计工具',
-      'marketing': '营销工具',
-      'tools': '通用工具',
-      'security': '安全工具',
-      'social': '社交媒体'
+  // 获取分类的显示名称和颜色
+  const getCategoryInfo = (category: string) => {
+    const categoryData: { [key: string]: { name: string, color: string } } = {
+      'all': { name: '全部', color: 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600' },
+      'domain': { name: '域名工具', color: 'bg-blue-100 text-blue-700 hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-900/50' },
+      'ai': { name: 'AI工具', color: 'bg-purple-100 text-purple-700 hover:bg-purple-200 dark:bg-purple-900/30 dark:text-purple-300 dark:hover:bg-purple-900/50' },
+      'api': { name: 'API平台', color: 'bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-300 dark:hover:bg-green-900/50' },
+      'analytics': { name: '数据分析', color: 'bg-orange-100 text-orange-700 hover:bg-orange-200 dark:bg-orange-900/30 dark:text-orange-300 dark:hover:bg-orange-900/50' },
+      'seo': { name: 'SEO工具', color: 'bg-red-100 text-red-700 hover:bg-red-200 dark:bg-red-900/30 dark:text-red-300 dark:hover:bg-red-900/50' },
+      'monetization': { name: '网站变现', color: 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:hover:bg-emerald-900/50' },
+      'payment': { name: '支付工具', color: 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50' },
+      'productivity': { name: '效率工具', color: 'bg-cyan-100 text-cyan-700 hover:bg-cyan-200 dark:bg-cyan-900/30 dark:text-cyan-300 dark:hover:bg-cyan-900/50' },
+      'development': { name: '开发工具', color: 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600' },
+      'design': { name: '设计工具', color: 'bg-pink-100 text-pink-700 hover:bg-pink-200 dark:bg-pink-900/30 dark:text-pink-300 dark:hover:bg-pink-900/50' },
+      'marketing': { name: '营销工具', color: 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-300 dark:hover:bg-yellow-900/50' },
+      'tools': { name: '通用工具', color: 'bg-teal-100 text-teal-700 hover:bg-teal-200 dark:bg-teal-900/30 dark:text-teal-300 dark:hover:bg-teal-900/50' },
+      'security': { name: '安全工具', color: 'bg-red-100 text-red-700 hover:bg-red-200 dark:bg-red-900/30 dark:text-red-300 dark:hover:bg-red-900/50' },
+      'social': { name: '社交媒体', color: 'bg-blue-100 text-blue-700 hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-900/50' }
     }
-    return categoryNames[category] || category
+    return categoryData[category] || {
+      name: category,
+      color: 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+    }
   }
 
   const handleCategoryChange = (category: string) => {
@@ -59,29 +62,42 @@ export default function CategoryFilter({ tools, onCategoryChange, searchResults 
       setSelectedCategory('all')
       onCategoryChange('all')
     }
-  }, [searchResults, selectedCategory, onCategoryChange]) // 移除categories依赖
+  }, [searchResults, selectedCategory, onCategoryChange])
 
   return (
-    <div className="relative w-full">
-      <select
-        value={selectedCategory}
-        onChange={(e) => handleCategoryChange(e.target.value)}
-        className="w-full bg-[var(--surface)] border border-[var(--border)] rounded-lg px-4 py-3 pr-12 text-[var(--foreground)] text-sm focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/20 appearance-none cursor-pointer transition-all duration-200 hover:border-[var(--primary)]/50"
-        style={{ 
-          minWidth: '200px',
-          maxWidth: '100%',
-          backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
-          backgroundPosition: 'right 1rem center',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: '1rem 1rem'
-        }}
-      >
-        {categories.map((category) => (
-          <option key={category} value={category} className="py-2 text-sm">
-            {getCategoryDisplayName(category)} ({getCategoryCount(category)})
-          </option>
-        ))}
-      </select>
+    <div className="w-full">
+      <div className="flex flex-wrap gap-2">
+        {categories.map((category) => {
+          const categoryInfo = getCategoryInfo(category)
+          const count = getCategoryCount(category)
+          const isSelected = selectedCategory === category
+          
+          return (
+            <button
+              key={category}
+              onClick={() => handleCategoryChange(category)}
+              className={`
+                inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105
+                ${isSelected 
+                  ? 'bg-[var(--primary)] text-white shadow-md' 
+                  : categoryInfo.color
+                }
+              `}
+            >
+              <span>{categoryInfo.name}</span>
+              <span className={`
+                text-xs px-1.5 py-0.5 rounded-full font-normal
+                ${isSelected 
+                  ? 'bg-white/20 text-white' 
+                  : 'bg-black/10 dark:bg-white/20'
+                }
+              `}>
+                {count}
+              </span>
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 } 

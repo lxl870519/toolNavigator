@@ -424,5 +424,13 @@ export const tools: Tool[] = [
     url: 'https://html.tailus.io/blocks/hero-section/',
     category: 'design',
     tags: ['ui优化', 'HTML模块', '页面区块']
+  },
+  {
+    id: '54',
+    name: 'SEO Box Referring Analysis',
+    description: '网站推荐来源分析工具，查看网站的顶级推荐来源和流量统计',
+    url: 'https://seo.box/referring/',
+    category: 'seo',
+    tags: ['SEO', '推荐来源', '流量分析', '网站统计']
   }
 ] 

@@ -6,18 +6,13 @@ import ToolCard from '@/components/ToolCard'
 import SearchBar from '@/components/SearchBar'
 import CategoryFilter from '@/components/CategoryFilter'
 import { Tool } from '@/types/tool'
-import { FaGithub, FaTwitter, FaMoon, FaSun, FaTools, FaSearch, FaUsers, FaChartLine, FaHeart } from 'react-icons/fa'
+import { FaGithub, FaTwitter, FaMoon, FaSun, FaTools, FaSearch, FaHeart } from 'react-icons/fa'
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchResults, setSearchResults] = useState<Tool[]>(tools)
   const [isDark, setIsDark] = useState(false)
   const [mounted, setMounted] = useState(false)
-
-  // 简单的计数器状态
-  const [toolCount, setToolCount] = useState(0)
-  const [userCount, setUserCount] = useState(0)
-  const [categoryCount, setCategoryCount] = useState(0)
 
   // 获取分类的中文显示名称
   const getCategoryDisplayName = (category: string) => {
@@ -43,11 +38,6 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true)
-    
-    // 简单的数字设置，不用动画
-    setToolCount(tools.length)
-    setUserCount(1200)
-    setCategoryCount(new Set(tools.map(tool => tool.category)).size)
   }, [])
 
   const filteredTools = selectedCategory === 'all' 
@@ -106,58 +96,21 @@ export default function Home() {
 
       {/* 主要内容 */}
       <main className="container py-8">
-        {/* 简洁的英雄区域 */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[var(--foreground)] mb-4">
-            探索优质工具
-          </h2>
-          <p className="text-lg md:text-xl text-[var(--muted)] mb-8 max-w-2xl mx-auto">
-            精心收集的在线工具集合，帮助您提升工作效率
-          </p>
-          
-          {/* 统计数据卡片 */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
-            <div className="card text-center">
-              <FaTools className="w-8 h-8 text-[var(--primary)] mx-auto mb-3" />
-              <div className="text-2xl font-bold text-[var(--foreground)] mb-1">{toolCount}</div>
-              <div className="text-sm text-[var(--muted)]">精选工具</div>
-            </div>
-            <div className="card text-center">
-              <FaUsers className="w-8 h-8 text-[var(--secondary)] mx-auto mb-3" />
-              <div className="text-2xl font-bold text-[var(--foreground)] mb-1">{userCount}+</div>
-              <div className="text-sm text-[var(--muted)]">用户使用</div>
-            </div>
-            <div className="card text-center">
-              <FaChartLine className="w-8 h-8 text-[var(--accent)] mx-auto mb-3" />
-              <div className="text-2xl font-bold text-[var(--foreground)] mb-1">{categoryCount}</div>
-              <div className="text-sm text-[var(--muted)]">工具分类</div>
-            </div>
-          </div>
+        {/* 搜索区域 */}
+        <div className="max-w-4xl mx-auto mb-6">
+          <SearchBar 
+            tools={tools} 
+            onSearch={setSearchResults} 
+          />
         </div>
 
-        {/* 搜索和筛选区域 */}
-        <div className="max-w-4xl mx-auto mb-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-end">
-            <div className="lg:col-span-3">
-              <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
-                搜索工具
-              </label>
-              <SearchBar 
-                tools={tools} 
-                onSearch={setSearchResults} 
-              />
-            </div>
-            <div className="lg:col-span-1">
-              <label className="block text-sm font-medium text-[var(--foreground)] mb-2">
-                筛选分类
-              </label>
-              <CategoryFilter 
-                tools={tools} 
-                searchResults={searchResults}
-                onCategoryChange={setSelectedCategory} 
-              />
-            </div>
-          </div>
+        {/* 分类展示区域 */}
+        <div className="mb-8">
+          <CategoryFilter 
+            tools={tools} 
+            searchResults={searchResults}
+            onCategoryChange={setSelectedCategory} 
+          />
         </div>
 
         {/* 结果统计 */}
