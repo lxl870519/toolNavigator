@@ -432,5 +432,109 @@ export const tools: Tool[] = [
     url: 'https://seo.box/referring/',
     category: 'seo',
     tags: ['SEO', '推荐来源', '流量分析', '网站统计']
+  },
+  {
+    id: '55',
+    name: 'Linux Education Latvia',
+    description: '免费的Linux学习资源平台，提供优质的Linux教育内容和课程',
+    url: 'https://linux.edu.com.lv/',
+    category: 'welfare',
+    tags: ['福利', '免费', 'Linux', '教育', '学习']
+  },
+  {
+    id: '56',
+    name: 'Google Trends',
+    description: '查看实时热搜词，了解全球搜索趋势和热门话题',
+    url: 'https://trends.google.com/trending?geo=US&hl=zh-CN',
+    category: '榜单',
+    tags: ['榜单', '搜索趋势', '热点', '实时']
+  },
+  {
+    id: '57',
+    name: 'Toolify AI榜单',
+    description: '了解热门AI工具和应用的收入排行，追踪AI行业发展趋势',
+    url: 'https://www.toolify.ai/Best-AI-Tools-revenue',
+    category: '榜单',
+    tags: ['榜单', 'AI工具', '收入排行', '行业趋势']
+  },
+  {
+    id: '58',
+    name: 'Ahrefs网站榜单',
+    description: '追踪当前最火的网站，了解网站流量和热门趋势',
+    url: 'https://ahrefs.com/websites#trending',
+    category: '榜单',
+    tags: ['榜单', '网站排行', '流量趋势', '热门网站']
+  },
+  {
+    id: '59',
+    name: 'TikTok热门榜单',
+    description: '查看TikTok热门话题和短视频趋势，掌握最新社交媒体动态',
+    url: 'https://ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag/pc/zh',
+    category: '榜单',
+    tags: ['榜单', 'TikTok', '短视频', '热门话题']
+  },
+  {
+    id: '60',
+    name: 'YouTube热门榜单',
+    description: '查看当前YouTube最火的视频内容，包括长视频和短视频趋势',
+    url: 'https://www.youtube.com/feed/trending',
+    category: '榜单',
+    tags: ['榜单', 'YouTube', '视频', '热门内容']
+  },
+  {
+    id: '61',
+    name: 'X(Twitter)热门榜单',
+    description: '查看X平台热议话题，了解社交媒体最新动态和趋势',
+    url: 'https://x.com/explore/tabs/trending',
+    category: '榜单',
+    tags: ['榜单', 'Twitter', '社交媒体', '热议话题']
+  },
+  {
+    id: '62',
+    name: 'App Store应用榜单',
+    description: '查看iPhone和iPad热门应用排行，掌握移动应用市场趋势',
+    url: 'https://apps.apple.com/us/charts/iphone',
+    category: '榜单',
+    tags: ['榜单', 'App Store', 'iPhone', 'iPad', '应用排行']
+  },
+  {
+    id: '63',
+    name: 'Google Play应用榜单',
+    description: '查看安卓平台热门游戏和应用，了解Android市场动态',
+    url: 'https://play.google.com/store/games?hl=zh',
+    category: '榜单',
+    tags: ['榜单', 'Google Play', '安卓应用', '游戏', '应用商店']
+  },
+  {
+    id: '64',
+    name: 'Spotify音乐榜单',
+    description: '查看美国及全球热门歌曲榜单，了解音乐流行趋势',
+    url: 'https://charts.spotify.com/charts/overview/us',
+    category: '榜单',
+    tags: ['榜单', 'Spotify', '音乐', '流行歌曲', '排行榜']
+  },
+  {
+    id: '65',
+    name: 'Netflix影视榜单',
+    description: '查看Netflix热播影视排行，了解最新的影视流行趋势',
+    url: 'https://www.netflix.com/tudum/top10',
+    category: '榜单',
+    tags: ['榜单', 'Netflix', '影视', '热播剧', '电影']
+  },
+  {
+    id: '66',
+    name: 'Reddit热门榜单',
+    description: '查看全球网友热议内容，了解Reddit社区最新热门话题',
+    url: 'https://www.reddit.com/r/popular/',
+    category: '榜单',
+    tags: ['榜单', 'Reddit', '论坛', '社区', '热门话题']
+  },
+  {
+    id: '67',
+    name: 'Steam游戏榜单',
+    description: '查看Steam热门游戏在线人数和流行趋势，了解PC游戏市场动态',
+    url: 'https://steamcharts.com/',
+    category: '榜单',
+    tags: ['榜单', 'Steam', '游戏', '在线人数', 'PC游戏']
   }
 ] 

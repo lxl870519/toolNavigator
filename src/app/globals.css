@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    /* 更温和的配色方案 */
-    --primary: #6366f1;
-    --primary-light: #8b5cf6;
-    --primary-dark: #4f46e5;
-    --secondary: #06b6d4;
-    --secondary-light: #0ea5e9;
+    /* 深蓝商务系配色方案 */
+    --primary: #1e3a8a;
+    --primary-light: #3b82f6;
+    --primary-dark: #1e40af;
+    --secondary: #0f172a;
+    --secondary-light: #334155;
     --accent: #f59e0b;
     --accent-light: #fbbf24;
     
-    /* 柔和的背景色 */
-    --background: #fafbfc;
+    /* 商务感背景色 */
+    --background: #f8fafc;
     --background-secondary: #f1f5f9;
     --surface: #ffffff;
     --surface-hover: #f8fafc;
-    --surface-glass: rgba(255, 255, 255, 0.8);
+    --surface-glass: rgba(255, 255, 255, 0.85);
     --surface-elevated: #ffffff;
     
-    /* 更好的文字对比度 */
-    --foreground: #1e293b;
-    --foreground-secondary: #475569;
+    /* 专业的文字色彩 */
+    --foreground: #0f172a;
+    --foreground-secondary: #334155;
     --muted: #64748b;
     --muted-light: #94a3b8;
     
@@ -32,42 +32,42 @@
     --border-light: #f1f5f9;
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --shadow-colored: 0 4px 6px -1px rgba(99, 102, 241, 0.1);
+    --shadow-colored: 0 4px 6px -1px rgba(30, 58, 138, 0.15);
     
     /* 微妙的模糊效果 */
     --backdrop-blur: blur(8px);
   }
 
   .dark {
-    /* 舒适的暗色主题 */
-    --primary: #8b5cf6;
-    --primary-light: #a78bfa;
-    --primary-dark: #7c3aed;
-    --secondary: #06b6d4;
-    --secondary-light: #0ea5e9;
+    /* 深蓝商务暗色主题 */
+    --primary: #3b82f6;
+    --primary-light: #60a5fa;
+    --primary-dark: #2563eb;
+    --secondary: #1e40af;
+    --secondary-light: #3b82f6;
     --accent: #fbbf24;
     --accent-light: #fcd34d;
     
-    /* 暗色背景 */
+    /* 深色商务背景 */
     --background: #0f172a;
     --background-secondary: #1e293b;
     --surface: #1e293b;
     --surface-hover: #334155;
-    --surface-glass: rgba(30, 41, 59, 0.8);
+    --surface-glass: rgba(30, 41, 59, 0.9);
     --surface-elevated: #334155;
     
-    /* 暗色文字 */
+    /* 深色文字 */
     --foreground: #f1f5f9;
     --foreground-secondary: #cbd5e1;
     --muted: #94a3b8;
     --muted-light: #64748b;
     
-    /* 暗色边框 */
+    /* 深色边框 */
     --border: #334155;
     --border-light: #1e293b;
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
-    --shadow-colored: 0 4px 6px -1px rgba(139, 92, 246, 0.2);
+    --shadow-colored: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
   }
 
   body {
@@ -105,7 +105,7 @@
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  /* 简洁的按钮设计 */
+  /* 商务风格按钮设计 */
   .btn {
     @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 inline-flex items-center justify-center;
     border: 1px solid transparent;
@@ -122,7 +122,7 @@
     background: var(--primary-dark);
     border-color: var(--primary-dark);
     transform: translateY(-1px);
-    box-shadow: 0 6px 12px -2px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 6px 12px -2px rgba(30, 58, 138, 0.25);
   }
 
   .btn-secondary {
@@ -137,7 +137,7 @@
     transform: translateY(-1px);
   }
 
-  /* 优雅的卡片设计 */
+  /* 专业的卡片设计 */
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -168,7 +168,7 @@
   .input:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
   }
 
   .input::placeholder {
@@ -198,62 +198,56 @@
   .select:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
   }
 
   .dark .select {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
   }
 
-  /* 简洁的标签设计 */
+  /* 商务风格徽章 */
   .badge {
-    padding: 0.25rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
+    @apply px-2 py-1 rounded-full text-xs font-medium;
+    background: var(--primary);
+    color: white;
   }
 
   .badge-outline {
-    background: var(--surface);
-    color: var(--muted);
+    @apply px-2 py-1 rounded-full text-xs font-medium;
+    background: transparent;
     border: 1px solid var(--border);
+    color: var(--foreground-secondary);
   }
 
   .badge-outline:hover {
-    background: var(--primary);
-    color: white;
     border-color: var(--primary);
-    transform: translateY(-1px);
+    color: var(--primary);
   }
 
-  /* 头部样式 */
+  /* 专业的头部样式 */
   .header {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--surface-glass);
     backdrop-filter: var(--backdrop-blur);
     border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    box-shadow: var(--shadow);
   }
 
   .dark .header {
-    background: rgba(15, 23, 42, 0.95);
+    background: var(--surface-glass);
+    border-bottom-color: var(--border);
   }
 
-  /* 底部样式 */
+  /* 商务风格页脚 */
   .footer {
     background: var(--surface);
     border-top: 1px solid var(--border);
-    margin-top: 4rem;
+    color: var(--foreground-secondary);
   }
 
   /* 加载动画 */
   .loading-spinner {
-    width: 2rem;
-    height: 2rem;
+    width: 20px;
+    height: 20px;
     border: 2px solid var(--border);
     border-top: 2px solid var(--primary);
     border-radius: 50%;
@@ -261,7 +255,8 @@
   }
 
   @keyframes spin {
-    to { transform: rotate(360deg); }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
   /* 悬停效果 */
@@ -273,17 +268,18 @@
     transform: translateY(-2px);
   }
 
-  /* 渐变文字效果 */
+  /* 渐变文字 */
   .gradient-text {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: transparent;
   }
 
-  /* 简单的脉冲动画 */
+  /* 脉冲动画 */
   .pulse-soft {
-    animation: pulseSoft 2s ease-in-out infinite;
+    animation: pulseSoft 2s infinite;
   }
 
   @keyframes pulseSoft {
@@ -293,44 +289,44 @@
 
   /* 淡入动画 */
   .fade-in {
-    animation: fadeIn 0.3s ease-out;
+    animation: fadeIn 0.5s ease-in-out;
   }
 
   @keyframes fadeIn {
-    from { 
-      opacity: 0; 
-      transform: translateY(10px); 
+    from {
+      opacity: 0;
+      transform: translateY(10px);
     }
-    to { 
-      opacity: 1; 
-      transform: translateY(0); 
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  /* 标签分组 */
+  /* 标签组 */
   .tag-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    @apply flex flex-wrap gap-2;
   }
 
-  /* 分隔线 */
+  .tag-group .badge {
+    @apply cursor-pointer hover:scale-105;
+  }
+
+  /* 分割线 */
   .divider {
     height: 1px;
     background: var(--border);
     margin: 1rem 0;
   }
 
-  /* 卡片组 */
+  /* 卡片网格 */
   .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
   }
 
   @media (max-width: 640px) {
     .card-grid {
-      grid-template-columns: 1fr;
+      @apply grid-cols-1 gap-4;
     }
   }
 } 

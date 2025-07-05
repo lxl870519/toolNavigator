@@ -31,7 +31,8 @@ export default function Home() {
       'marketing': '营销工具',
       'tools': '通用工具',
       'security': '安全工具',
-      'social': '社交媒体'
+      'social': '社交媒体',
+      'welfare': '福利'
     }
     return categoryNames[category] || category
   }
