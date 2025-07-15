@@ -536,5 +536,13 @@ export const tools: Tool[] = [
     url: 'https://steamcharts.com/',
     category: '榜单',
     tags: ['榜单', 'Steam', '游戏', '在线人数', 'PC游戏']
+  },
+  {
+    id: '68',
+    name: 'Traffic.cv',
+    description: '网站流量监测和新域名发现平台，查看最新注册域名和流量趋势',
+    url: 'https://traffic.cv/leaderboard/traffic/2025/6/new',
+    category: 'analytics',
+    tags: ['流量监测', '域名发现', '网站分析', '排行榜', '新网站']
   }
 ] 
